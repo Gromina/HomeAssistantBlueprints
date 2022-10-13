@@ -1,0 +1,207 @@
+blueprint:
+  name: 20 Button remote control switches
+  description: |
+   Bind actions on each of 20 buttons for 20-button remote. 
+   https://github.com/diyruz/freepad 
+   https://modkam.ru/2019/11/13/pult-zigbee-v2-prosto-otlomi-lishnee/
+
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: 20 button remote to use
+      selector:
+        entity:
+          domain: sensor
+    button_1_short:
+      name: 1 button - short press
+      description: Action to run on short 1 button press
+      default: []
+      selector:
+        action:
+    button_2_short:
+      name: 2 button - short press
+      description: Action to run on short 2 button press
+      default: []
+      selector:
+        action:
+    button_3_short:
+      name: 3 button - short press
+      description: Action to run on short 3 button press
+      default: []
+      selector:
+        action:
+    button_4_short:
+      name: 4 button - short press
+      description: Action to run on short 4 button press
+      default: []
+      selector:
+        action:
+    button_5_short:
+      name: 5 button - short press
+      description: Action to run on short 5 button press
+      default: []
+      selector:
+        action:
+    button_6_short:
+      name: 6 button - short press
+      description: Action to run on short 6 button press
+      default: []
+      selector:
+        action:
+    button_7_short:
+      name: 7 button - short press
+      description: Action to run on short 7 button press
+      default: []
+      selector:
+        action:
+    button_8_short:
+      name: 8 button - short press
+      description: Action to run on short 8 button press
+      default: []
+      selector:
+        action:
+    button_9_short:
+      name: 9 button - short press
+      description: Action to run on short 9 button press
+      default: []
+      selector:
+        action:
+    button_10_short:
+      name: 10 button - short press
+      description: Action to run on short 10 button press
+      default: []
+      selector:
+        action:
+    button_11_short:
+      name: 11 button - short press
+      description: Action to run on short 11 button press
+      default: []
+      selector:
+        action:
+    button_12_short:
+      name: 12 button - short press
+      description: Action to run on short 12 button press
+      default: []
+      selector:
+        action:
+    button_13_short:
+      name: 13 button - short press
+      description: Action to run on short 13 button press
+      default: []
+      selector:
+        action:
+    button_14_short:
+      name: 14 button - short press
+      description: Action to run on short 14 button press
+      default: []
+      selector:
+        action:
+    button_15_short:
+      name: 15 button - short press
+      description: Action to run on short 15 button press
+      default: []
+      selector:
+        action:
+    button_16_short:
+      name: 16 button - short press
+      description: Action to run on short 16 button press
+      default: []
+      selector:
+        action:
+    button_17_short:
+      name: 17 button - short press
+      description: Action to run on short 17 button press
+      default: []
+      selector:
+        action:
+    button_18_short:
+      name: 18 button - short press
+      description: Action to run on short 18 button press
+      default: []
+      selector:
+        action:
+    button_19_short:
+      name: 19 button - short press
+      description: Action to run on short 19 button press
+      default: []
+      selector:
+        action:
+    button_20_short:
+      name: 20 button - short press
+      description: Action to run on short 20 button press
+      default: []
+      selector:
+        action:
+
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input remote
+
+action:
+  - variables:
+      command: "{{ trigger.to_state.attributes.action }}"
+  - choose:
+      - conditions:
+          - "{{ command == 'button_1_single' }}"
+        sequence: !input button_1_short
+      - conditions:
+          - "{{ command == 'button_2_single' }}"
+        sequence: !input button_2_short
+      - conditions:
+          - "{{ command == 'button_3_single' }}"
+        sequence: !input button_3_short
+      - conditions:
+          - "{{ command == 'button_4_single' }}"
+        sequence: !input button_4_short
+      - conditions:
+          - "{{ command == 'button_5_single' }}"
+        sequence: !input button_5_short
+      - conditions:
+          - "{{ command == 'button_6_single' }}"
+        sequence: !input button_6_short
+      - conditions:
+          - "{{ command == 'button_7_single' }}"
+        sequence: !input button_7_short
+      - conditions:
+          - "{{ command == 'button_8_single' }}"
+        sequence: !input button_8_short
+      - conditions:
+          - "{{ command == 'button_9_single' }}"
+        sequence: !input button_9_short
+      - conditions:
+          - "{{ command == 'button_10_single' }}"
+        sequence: !input button_10_short
+      - conditions:
+          - "{{ command == 'button_11_single' }}"
+        sequence: !input button_11_short
+      - conditions:
+          - "{{ command == 'button_12_single' }}"
+        sequence: !input button_12_short
+      - conditions:
+          - "{{ command == 'button_13_single' }}"
+        sequence: !input button_13_short
+      - conditions:
+          - "{{ command == 'button_14_single' }}"
+        sequence: !input button_14_short
+      - conditions:
+          - "{{ command == 'button_15_single' }}"
+        sequence: !input button_15_short
+      - conditions:
+          - "{{ command == 'button_16_single' }}"
+        sequence: !input button_16_short
+      - conditions:
+          - "{{ command == 'button_17_single' }}"
+        sequence: !input button_17_short
+      - conditions:
+          - "{{ command == 'button_18_single' }}"
+        sequence: !input button_18_short
+      - conditions:
+          - "{{ command == 'button_19_single' }}"
+        sequence: !input button_19_short
+      - conditions:
+          - "{{ command == 'button_20_single' }}"
+        sequence: !input button_20_short
