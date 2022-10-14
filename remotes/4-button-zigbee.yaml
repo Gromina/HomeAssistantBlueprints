@@ -1,0 +1,62 @@
+blueprint:
+  name: 4 Button remote control switches
+  description: |
+   Bind actions on each of 4 buttons for 4-button remote. 
+   https://aliexpress.ru/item/1005002915179764.html
+
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: 4 button remote to use
+      selector:
+        entity:
+          domain: sensor
+    button_1_short:
+      name: 1 button - short press
+      description: Action to run on short 1 button press
+      default: []
+      selector:
+        action:
+    button_2_short:
+      name: 2 button - short press
+      description: Action to run on short 2 button press
+      default: []
+      selector:
+        action:
+    button_3_short:
+      name: 3 button - short press
+      description: Action to run on short 3 button press
+      default: []
+      selector:
+        action:
+    button_4_short:
+      name: 4 button - short press
+      description: Action to run on short 4 button press
+      default: []
+      selector:
+        action:
+
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input remote
+
+action:
+  - variables:
+      command: "{{ trigger.to_state.attributes.action }}"
+  - choose:
+      - conditions:
+          - "{{ command == '1_single' }}"
+        sequence: !input button_1_short
+      - conditions:
+          - "{{ command == '2_single' }}"
+        sequence: !input button_2_short
+      - conditions:
+          - "{{ command == '3_single' }}"
+        sequence: !input button_3_short
+      - conditions:
+          - "{{ command == '4_single' }}"
+        sequence: !input button_4_short
