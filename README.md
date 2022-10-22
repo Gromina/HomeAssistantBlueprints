@@ -18,7 +18,7 @@ ToDo: support long presses and double clickshttp://modkam.ru/wp-content/uploads/
 
 ### 4 button remote 
 
-![image](/images/4-button-remote.png width="150")
+![image](images/4-button-remote.png width="150")
 
 HW: https://aliexpress.ru/item/1005002915179764.html
 
