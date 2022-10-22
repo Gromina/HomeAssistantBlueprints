@@ -1,0 +1,89 @@
+blueprint:
+  name: Xiaomi WXKG01LM Button
+  description: |
+   Bind actions to button
+   https://www.zigbee2mqtt.io/devices/WXKG01LM.html
+
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: Xaoimi button to use
+      selector:
+        entity:
+          domain: sensor
+    button_single:
+      name: Single short press
+      description: Action to run on 1 short press
+      default: []
+      selector:
+        action:
+    button_double:
+      name: Double press
+      description: Action to run on double press
+      default: []
+      selector:
+        action:
+    button_triple:
+      name: Triple press
+      description: Action to run on triple press
+      default: []
+      selector:
+        action:
+    button_quadruple:
+      name: Quadruple press
+      description: Action to run on qudruple press
+      default: []
+      selector:
+        action:
+    button_many:
+      name: Many presses
+      description: Action to run on more than 4 short presses
+      default: []
+      selector:
+        action:
+    button_long:
+      name: Press and hold
+      description: Action to run on press and hold
+      default: []
+      selector:
+        action:
+    button_release:
+      name: Release after long press
+      description: Action to run on release after long press
+      default: []
+      selector:
+        action:
+
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input remote
+
+action:
+  - variables:
+      command: "{{ trigger.to_state.attributes.action }}"
+  - choose:
+      - conditions:
+          - "{{ command == 'single' }}"
+        sequence: !input button_single
+      - conditions:
+          - "{{ command == 'double' }}"
+        sequence: !input button_double
+      - conditions:
+          - "{{ command == 'triple' }}"
+        sequence: !input button_triple
+      - conditions:
+          - "{{ command == 'quadruple' }}"
+        sequence: !input button_quadruple
+      - conditions:
+          - "{{ command == 'many' }}"
+        sequence: !input button_many
+      - conditions:
+          - "{{ command == 'long' }}"
+        sequence: !input button_long
+      - conditions:
+          - "{{ command == 'release' }}"
+        sequence: !input button_release
