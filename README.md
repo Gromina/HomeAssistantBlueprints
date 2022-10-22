@@ -5,7 +5,7 @@ Assorted blueprints I use in my homeassistant
 
 ### 20 button remote 
 
-![image](http://modkam.ru/wp-content/uploads/2019/11/zigbee_keypad19.jpg width="150")
+![image](http://modkam.ru/wp-content/uploads/2019/11/zigbee_keypad19.jpg)
 
 HW Docs: [firmware](https://github.com/diyruz/freepad) | [Article](https://modkam.ru/2019/11/13/pult-zigbee-v2-prosto-otlomi-lishnee/)
 
@@ -30,7 +30,7 @@ ToDo: support long presses and double clicks
 
 ### Xiaomi big button
 
-![image](/images/WXKG01LM.jpg width="150")
+![image](/images/WXKG01LM.jpg)
 
 HW: https://www.zigbee2mqtt.io/devices/WXKG01LM.html
 
