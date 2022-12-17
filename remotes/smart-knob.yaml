@@ -1,0 +1,128 @@
+blueprint:
+  name: Smart knob
+  description: |
+   Bind actions for zigbee smartknob like this
+   https://aliexpress.ru/item/1005003727917932.html
+   Modes of operations are changed by triple button click
+
+  domain: automation
+  input:
+    remote:
+      name: Smart Knob
+      description: Smart knob
+      selector:
+        entity:
+          domain: sensor
+
+    brightness_step_down:
+      name: Mode 1. Turn left
+      description: Action on turn left in Color/Brightness mode
+      default: []
+      selector:
+        action:
+    brightness_step_up:
+      name: Mode 1. Turn right
+      description: Action on turn right in Color/Brightness mode
+      default: []
+      selector:
+        action:
+    color_temperature_step_down:
+      name: Mode 1. Turn left holding button
+      description: Action on turn left in Color/Brightness mode while holding button down
+      default: []
+      selector:
+        action:
+    color_temperature_step_up:
+      name: Mode 1. Turn right holding button
+      description: Action on turn right in Color/Brightness mode while holding button down
+      default: []
+      selector:
+        action:
+    toggle:
+      name: Mode 1. Button press
+      description: Action on button press in Color/Brightness mode
+      default: []
+      selector:
+        action:
+    hue_move:
+      name: Mode 1. Action on start holding button
+      description: Action on button hold without rotation in Color/Brightness mode
+      default: []
+      selector:
+        action:
+    hue_stop:
+      name: Mode 1. Action on button release after hold
+      description: Action on button release without rotation in Color/Brightness mode
+      default: []
+      selector:
+        action:
+    
+    rotate_left:
+      name: Mode 2. Turn left
+      description: Action on turn left in usual mode
+      default: []
+      selector:
+        action:
+    rotate_right:
+      name: Mode 2. Turn right
+      description: Action on turn right in usual mode
+      default: []
+      selector:
+        action:
+    single:
+      name: Mode 2. Button single press
+      description: Action on single button press in usual mode
+      default: []
+      selector:
+        action:
+    double:
+      name: Mode 2. Button double press
+      description: Action on double button press in usual mode
+      default: []
+      selector:
+        action:
+
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input remote
+
+action:
+  - variables:
+      command: "{{ trigger.to_state.attributes.action }}"
+  - choose:
+      - conditions:
+          - "{{ command == 'brightness_step_down'}}"
+        sequence: !input brightness_step_down
+      - conditions:
+          - "{{ command == 'brightness_step_up'}}"
+        sequence: !input brightness_step_up
+      - conditions:
+          - "{{ command == 'color_temperature_step_down'}}"
+        sequence: !input color_temperature_step_down
+      - conditions:
+          - "{{ command == 'color_temperature_step_up'}}"
+        sequence: !input color_temperature_step_up
+      - conditions:
+          - "{{ command == 'toggle'}}"
+        sequence: !input toggle
+      - conditions:
+          - "{{ command == 'hue_move'}}"
+        sequence: !input hue_move
+      - conditions:
+          - "{{ command == 'hue_stop'}}"
+        sequence: !input hue_stop
+      - conditions:
+          - "{{ command == 'rotate_left'}}"
+        sequence: !input rotate_left
+      - conditions:
+          - "{{ command == 'rotate_right'}}"
+        sequence: !input rotate_right
+      - conditions:
+          - "{{ command == 'single'}}"
+        sequence: !input single
+      - conditions:
+          - "{{ command == 'double'}}"
+        sequence: !input double
