@@ -37,3 +37,17 @@ HW: https://www.zigbee2mqtt.io/devices/WXKG01LM.html
 This blueprint allows to bind actions on each of actions: single, double, triple, qudruple, many, long presses and on release
 
 Links: [Watch file](https://github.com/Gromina/HomeAssistantBlueprints/blob/master/remotes/xiaomi_button_WXKG01LM.yaml) | [Link to import in HA](https://raw.githubusercontent.com/Gromina/HomeAssistantBlueprints/master/remotes/xiaomi-button-WXKG01LM.yaml)
+ToDo: support long presses and double clicks
+
+### Smart knob remote 
+
+![image](images/smart_knob.png)
+
+HW: https://aliexpress.ru/item/1005003727917932.html
+
+This blueprint allows to bind actions(s) to the remote actions
+
+Links: [Watch file](https://github.com/Gromina/HomeAssistantBlueprints/blob/master/remotes/smart-knob.yaml) | [Link to import in HA](https://raw.githubusercontent.com/Gromina/HomeAssistantBlueprints/master/remotes/smart-knob.yaml)
+
+
+
